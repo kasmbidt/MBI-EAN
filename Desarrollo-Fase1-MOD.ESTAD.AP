@@ -53,11 +53,20 @@ sapply(informacion_clientes,function(x) sum(is.na(x)))
 
 #ahora si cargamos la libreria para los graficos
 library(ggplot2)
-
 #################################################          P6016                    ###
 #       QUIEN PROPORCIONA LA MAYOR PARTE DE LA INFORMACIÓN DE ESTE MIEMBRO DEL HOGAR
 
-ggplot(informacion_clientes, aes(P6016)) + geom_bar(aes(fill= P6020)) + labs(title= valueLabel(informacion_clientes$P6016), subtitle="Informacion Clientes Empresa En la Red", y="Frecuencia", caption = "Info Clientes - Fase1")
+summary(informacion_clientes$P6016)
+describe(informacion_clientes$P6016)
+mean(informacion_clientes$P6016, trim=0.10) #10% trimmed mean
+Moda(informacion_clientes$P6016)
+sd(informacion_clientes$P6016)
+var(informacion_clientes$P6016)
+quantile(informacion_clientes$P6016)
+range(informacion_clientes$P6016)
+
+
+ggplot(informacion_clientes, aes(P6016)) + geom_bar(aes(fill= P6020)) + labs(title= "¿Quien Proporciona La Informacion?", subtitle="Informacion Clientes Empresa En la Red", y="Frecuencia", x="Categoria", caption = "Info Clientes - Fase1")
 
 #plot(informacion_clientes$P6016, main = valueLabel(informacion_clientes$P6016), ylab = "Frecuencia")
 
@@ -67,11 +76,8 @@ table(informacion_clientes$P6020)
 prop.table(table(informacion_clientes$P6020))
 names(which(table(informacion_clientes$P6020) == max(table(informacion_clientes$P6020))))
 
-ggplot(informacion_clientes, aes(P6020)) + geom_bar(fill= "blue") + labs(title= valueLabel(informacion_clientes$P6020), subtitle="Informacion Clientes Empresa En la Red", x="Género", caption = "Info Clientes - Fase1")
+ggplot(informacion_clientes, aes(P6020)) + geom_bar(fill= c("grey", "pink")) + labs(title= "Clientes En la Red por Género", subtitle="Informacion Clientes Empresa En la Red", y= "Cant.", x="Género", caption = "Info Clientes - Fase1")
 
-
-piechart(informacion_clientes$P6020, labels(P6020), edges = 200, radius = 0.8, density = NULL, angle = 45, col = NULL, main = )
-#ggplot(informacion_clientes, aes(P6030S3)) + geom_bar(aes(col=P6020), size=2) + labs(title= valueLabel(informacion_clientes$P6030), subtitle="Informacion Clientes Empresa En la Red", y= "Mes de nacimiento", x="Año de Nacimiento", caption = "Info Clientes - Fase1")
 
 #################################################           P6030                  ###
 #                                            ¿CUÁL ES LA FECHA DE NACIMIENTO DE … ?
@@ -87,20 +93,48 @@ pie(table(informacion_clientes$P6030), col = c("yellow"), main = "¿CUÁL ES LA 
 #                                                      MES (MM):
 #contiene faltantes por lo que debemos hacer un subset con la variable sin faltantes para analizarla
 #la variable debe ser numerica
+
+
 subset1 <- informacion_clientes[!is.na(informacion_clientes$P6030S1),]
+
+summary(subset1$P6030S1)
+describe(subset1$P6030S1)
+mean(subset1$P6030S1, trim = 10)
+median(subset1$P6030S1)
+Moda(subset1$P6030S1)
+sd(subset1$P6030S1)
+var(subset1$P6030S1)
+quantile(subset1$P6030S1)
+range(subset1$P6030S1)
+
+ggplot(subset1, aes(P6030S1)) + geom_bar(fill = "pink") + labs(title= "MESES DE NACIMIENTO CLIENTES EN LA RED", subtitle="Informacion Clientes Empresa En la Red", y="Frecuencia", x="Mes de Nacimiento", caption = "Info Clientes - Fase1")
 
 
 #################################################           P6030S3                  ###
 #                                                      AÑO (AAAA):
 #contiene faltantes por lo que debemos hacer un subset con la variable sin faltantes para analizarla
 #la variable debe ser numerica
-subset2 <- subset1[!is.na(informacion_clientes$P6030S3),]
 
+subset2 <- informacion_clientes[!is.na(informacion_clientes$P6030S3),]
 
+summary(subset2$P6030S3)
+describe(subset2$P6030S3)
+mean(subset2$P6030S3, trim = 10)
+median(subset2$P6030S3)
+Moda(subset2$P6030S3)
+sd(subset2$P6030S3)
+var(subset2$P6030S3)
+quantile(subset2$P6030S3)
+range(subset2$P6030S3)
 
 boxplot(subset2$P6030S3, main = "Años de Nacimiento Clientes En La Red", xlab="Año", col="orange", border = "brown", horizontal = TRUE, notch = TRUE )
 
-boxplot(Temp~P6030S1, informacion_clientes$P6030S3, main = "Fechas de Nacimiento Clientes En La Red", xlab="Mes", ylab="Año", col="orange", border = "brown", notch = TRUE )
+#################################################           P6030S3                  ###
+#  
+
+
+
+
 
 
 
