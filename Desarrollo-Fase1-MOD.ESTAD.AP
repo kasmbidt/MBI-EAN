@@ -1,1 +1,129 @@
+shell("cls")
+
+######################################################################################
+##########         MODELOS ESTADISTICOS APLICADOS - MBI - EAN - 2020-2		######
+###########################      TO DO :  FASE 1        ##############################
+######################################################################################
+#  By:  Alexandra Sastoque                                                         ###
+#       Carlos Melo                                   Group Name: EL TRI           ###
+#       Cristian Lopez                                                             ###
+######################################################################################
+
+
+rm(list=ls())
+getwd()
+setwd("C:/MAESTRIA - EAN/2020-201/2020-2 MODELOS ESTADISTICOS APLICADOS/Fase 1")
+
+library(readxl)
+informacion_clientes <- read_excel("C:/MAESTRIA - EAN/2020-201/2020-2 MODELOS ESTADISTICOS APLICADOS/informacion_clientes.xlsx", sheet = "Respuestas")
+
+
+########                    Actividad 2 (Colaborativa)                      #########
+
+#La empresa colombiana En la Red, está dedicada al diseño y montaje de la arquitectura
+#tecnológica para empresas y requiere asesorar a uno de sus clientes. Este cliente es
+#una empresa que ha crecido considerablemente en los últimos dos años, se vio en la
+#necesidad de contratar a En la Red para analizar información de sus clientes que permita
+#dirigir sus acciones a mejorar las utilidades. La información de los clientes la
+#encuentra en el siguiente archivo: Información clientes.
+#Esta empresa los ha responsabilizado a ustedes para hacer las siguientes actividades:
+
+######################  1. Informe descriptivo de la caracterización de los clientes de la empresa. #############
+
+# Para realizar este informe debe:
+#           i).   Identificar las variables presentes en el estudio, su tipo y nivel de medición.
+
+library(Hmisc)
+
+summary(informacion_clientes)
+sapply(informacion_clientes, class)
+str(informacion_clientes)
+describe(informacion_clientes)
+
+
+#         ii).  Identificar para cada variable el tipo de gráfico que mejor la resume y cree el gráfico. Para ver una manera de crear las gráficas en el software R revise el siguiente objeto de aprendizaje.
+#         iii). Identificar por cada variable las medidas estadísticas que mejor las describen y hallarlas.
+#         iv).  Organizar los gráficos y las medidas halladas de forma que se presenten los resultados de forma clara en un archivo.
+
+#Revisaremos una a una las variables de la siguiente manera
+#         PRIMERO
+#Tener en cuenta las variables que poseen valores faltantes
+
+sapply(informacion_clientes,function(x) sum(is.na(x)))
+
+#ahora si cargamos la libreria para los graficos
+library(ggplot2)
+
+#################################################          P6016                    ###
+#       QUIEN PROPORCIONA LA MAYOR PARTE DE LA INFORMACIÓN DE ESTE MIEMBRO DEL HOGAR
+
+ggplot(informacion_clientes, aes(P6016)) + geom_bar(aes(fill= P6020)) + labs(title= valueLabel(informacion_clientes$P6016), subtitle="Informacion Clientes Empresa En la Red", y="Frecuencia", caption = "Info Clientes - Fase1")
+
+#plot(informacion_clientes$P6016, main = valueLabel(informacion_clientes$P6016), ylab = "Frecuencia")
+
+#################################################           P6020                   ###
+#                                                    ¿ES HOMBRE O MUJER?
+table(informacion_clientes$P6020)
+prop.table(table(informacion_clientes$P6020))
+names(which(table(informacion_clientes$P6020) == max(table(informacion_clientes$P6020))))
+
+ggplot(informacion_clientes, aes(P6020)) + geom_bar(fill= "blue") + labs(title= valueLabel(informacion_clientes$P6020), subtitle="Informacion Clientes Empresa En la Red", x="Género", caption = "Info Clientes - Fase1")
+
+
+piechart(informacion_clientes$P6020, labels(P6020), edges = 200, radius = 0.8, density = NULL, angle = 45, col = NULL, main = )
+#ggplot(informacion_clientes, aes(P6030S3)) + geom_bar(aes(col=P6020), size=2) + labs(title= valueLabel(informacion_clientes$P6030), subtitle="Informacion Clientes Empresa En la Red", y= "Mes de nacimiento", x="Año de Nacimiento", caption = "Info Clientes - Fase1")
+
+#################################################           P6030                  ###
+#                                            ¿CUÁL ES LA FECHA DE NACIMIENTO DE … ?
+#Aca contamos con respuesta binaria "si responde" o "no responde"
+table(informacion_clientes$P6030)
+prop.table(table(informacion_clientes$P6030))
+names(which(table(informacion_clientes$P6030) == max(table(informacion_clientes$P6030))))
+
+pie(table(informacion_clientes$P6030), col = c("yellow"), main = "¿CUÁL ES LA FECHA DE NACIMIENTO?")
+
+
+#################################################           P6030S1                  ###
+#                                                      MES (MM):
+#contiene faltantes por lo que debemos hacer un subset con la variable sin faltantes para analizarla
+#la variable debe ser numerica
+subset1 <- informacion_clientes[!is.na(informacion_clientes$P6030S1),]
+
+
+#################################################           P6030S3                  ###
+#                                                      AÑO (AAAA):
+#contiene faltantes por lo que debemos hacer un subset con la variable sin faltantes para analizarla
+#la variable debe ser numerica
+subset2 <- subset1[!is.na(informacion_clientes$P6030S3),]
+
+
+
+boxplot(subset2$P6030S3, main = "Años de Nacimiento Clientes En La Red", xlab="Año", col="orange", border = "brown", horizontal = TRUE, notch = TRUE )
+
+boxplot(Temp~P6030S1, informacion_clientes$P6030S3, main = "Fechas de Nacimiento Clientes En La Red", xlab="Mes", ylab="Año", col="orange", border = "brown", notch = TRUE )
+
+
+
+
+
+#MEDIDAS PARA VARIABLES CUANTITATIVAS
+#length(var2)
+#median(var1)
+#mean(var1)
+#mean(var1, trim=0.10) #10% trimmed mean
+#min(var1)
+#max(var1)
+#desv_st=sd(var1)
+#sd(var1)
+#var(var1)
+#quantile(var1)
+#range(ejercicio)
+
+#MEDIDAS PARA VARIABLES CUALITATIVAS
+#moda de variables culitativas
+#names(which(table(informacion_clientes$P6210) == max(table(informacion_clientes$P6210))))
+#range(ejercicio)
+
+
+
 
