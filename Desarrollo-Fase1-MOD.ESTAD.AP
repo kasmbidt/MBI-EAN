@@ -423,7 +423,8 @@ range(informacion_clientes$P214)
 
 table(informacion_clientes$P214)
 
-timeseries
+ggplot(informacion_clientes, aes(P214)) + geom_boxplot(fill = "steelblue", col="red", outlier.color = "red", outlier.fill = "red", outlier.shape = 19, outlier.size = 1.5, notch = TRUE) + labs(title= "Monto de Compra en Tienda", subtitle="Informacion Clientes Empresa En la Red", y="", x="Monto en pesos (COP)", caption = "Info Clientes - Fase1")
+
 
 #################################################                 P215             ###
 #                              ¿Cuál FUE EL MONTO GASTADO EN TIENDAS SIMILARES?
@@ -440,7 +441,7 @@ range(informacion_clientes$P215)
 
 table(informacion_clientes$P215)
 
-timeseries
+ggplot(informacion_clientes, aes(P215)) + geom_boxplot(fill = "steelblue", col="red", outlier.color = "red", outlier.fill = "red", outlier.shape = 19, outlier.size = 1.5, notch = TRUE) + labs(title= "Monto Compras en Tiendas Similares", subtitle="Informacion Clientes Empresa En la Red", y="", x="Monto en pesos (COP)", caption = "Info Clientes - Fase1")
 
 #################################################                 P216             ###
 #                                               RENTA DISPONIBLE BRUTA DE LA REGION
@@ -456,7 +457,7 @@ range(informacion_clientes$P216)
 
 table(informacion_clientes$P216)
 
-timeseries
+ggplot(informacion_clientes, aes(P216)) + geom_boxplot(fill = "steelblue", col="red", outlier.color = "red", outlier.fill = "red", outlier.shape = 19, outlier.size = 1.5, notch = TRUE) + labs(title= "Renta Disponible Bruta de la Región", subtitle="Informacion Clientes Empresa En la Red", y="", x="Miles de millones de pesos (COP)", caption = "Info Clientes - Fase1")
 
 #################################################                 P217              ###
 #                                  GASTO TOTAL EN ALIMENTACION Y BEBIDAS NO ALCOHOLICAS
@@ -472,7 +473,7 @@ range(informacion_clientes$P217)
 
 table(informacion_clientes$P217)
 
-timeseries
+ggplot(informacion_clientes, aes(P217)) + geom_boxplot(fill = "steelblue", col="red", outlier.color = "red", outlier.fill = "red", outlier.shape = 19, outlier.size = 1.5, notch = TRUE) + labs(title= "Gasto en Alimentación y Bebidas no Alcoholicas", subtitle="Informacion Clientes Empresa En la Red", y="", x="Monto en pesos (COP)", caption = "Info Clientes - Fase1")
 
 #########################################################################################
 
