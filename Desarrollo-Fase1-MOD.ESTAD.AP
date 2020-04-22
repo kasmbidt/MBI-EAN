@@ -220,7 +220,8 @@ table(subset5$P6100)
 prop.table(table(subset5$P6100))
 names(which(table(subset5$P6100) == max(table(subset5$P6100))))
 
-barras
+ggplot(subset5, aes(P6100)) + geom_bar(fill= "aquamarine2") + labs(title= "Régimenes de Seguridad Social", subtitle="Informacion Clientes Empresa En la Red", y="Frecuencia", x="Regimen", caption = "Info Clientes - Fase1")
+
 
 #################################################           P6110               ###
 #                                ¿QUIÉN PAGA MENSUALMENTE POR LA AFILIACIÓN DE ...?
@@ -232,7 +233,9 @@ table(subset6$P6110)
 prop.table(table(subset6$P6110))
 names(which(table(subset6$P6110) == max(table(subset6$P6110))))
 
-barras
+pie(table(subset6$P6110), col = c("cyan", "orange", "white", "pink", "steelblue", "yellow"), main = "¿QUIÉN PAGA MENSUALMENTE POR LA AFILIACIÓN DE...?")
+
+ggplot(subset6, aes(P6110)) + geom_bar(fill= c("aquamarine2", "orange", "grey", "pink", "steelblue", "yellow")) + labs(title= "¿QUIÉN PAGA MENSUALMENTE POR LA AFILIACIÓN DE...?", subtitle="Informacion Clientes Empresa En la Red", y="Frecuencia", x="Aportante", caption = "Info Clientes - Fase1")
 
 #################################################           P6120                ###
 #¿CUÁNTO PAGA O CUÁNTO LE DESCUENTAN MENSUALMENTE? (SI NO SABE CUANTO PAGA O CUANTO LE DESCUENTAN ESCRIBA 98)
@@ -249,7 +252,7 @@ var(subset7$P6120)
 quantile(subset7$P6120)
 range(subset7$P6120)
 
-pte grafico
+ggplot(subset7, mapping = aes(x = P6040, y = P6120, col = P6120)) +  geom_point()  + labs(title= "Monto consignado a SS", subtitle="Informacion Clientes Empresa En la Red", y="Miles de pesos", x="Edades", caption = "Info Clientes - Fase1")
 
 #################################################           P6125               ###
 #¿EN LOS ÚLTIMOS DOCE MESES DEJÓ DE ASISTIR AL MÉDICO O NO SE HOSPITALIZÓ, POR NO TENER CON QUE PAGAR ESTOS SERVICIOS EN LA EPS O ARS?
@@ -259,7 +262,8 @@ table(informacion_clientes$P6125)
 prop.table(table(informacion_clientes$P6125))
 names(which(table(informacion_clientes$P6125) == max(table(informacion_clientes$P6125))))
 
-barras
+ggplot(informacion_clientes, aes(P6125)) + geom_bar(fill= c("aquamarine2", "grey", "orange")) + labs(title= "En los ultimos 12 meses dejó de asistir a la EPS, por no tener con que pagar", subtitle="Informacion Clientes Empresa En la Red", y="Frecuencia", x="", caption = "Info Clientes - Fase1")
+
 
 #################################################           P6160               ###
 #                                                      ¿SABE LEER Y ESCRIBIR?
@@ -269,7 +273,7 @@ table(informacion_clientes$P6160)
 prop.table(table(informacion_clientes$P6160))
 names(which(table(informacion_clientes$P6160) == max(table(informacion_clientes$P6160))))
 
-barras
+ggplot(informacion_clientes, aes(P6160)) + geom_bar(fill= c("magenta", "orange")) + labs(title= "¿Sabe leer y escribir?", subtitle="Informacion Clientes Empresa En la Red", y="Cant.", x="", caption = "Info Clientes - Fase1")
 
 #################################################           P6170               ###
 #                      ¿ACTUALMENTE ... ASISTE A LA ESCUELA, COLEGIO O UNIVERSIDAD?
@@ -280,7 +284,7 @@ table(informacion_clientes$P6170)
 prop.table(table(informacion_clientes$P6170))
 names(which(table(informacion_clientes$P6170) == max(table(informacion_clientes$P6170))))
 
-barras
+ggplot(informacion_clientes, aes(P6170)) + geom_bar(fill= c("orange", "yellow")) + labs(title= "¿Actualmente asiste a la escuela, colegio, universidad?", subtitle="Informacion Clientes Empresa En la Red", y="Cant.", x="", caption = "Info Clientes - Fase1")
 
 
 #################################################           P6175               ###
@@ -293,7 +297,7 @@ table(subset8$P6175)
 prop.table(table(subset8$P6175))
 names(which(table(subset8$P6175) == max(table(subset8$P6175))))
 
-barras
+ggplot(subset8, aes(P6175)) + geom_bar(fill= c("magenta", "cyan")) + labs(title= "Asiste a establecimiento de educacion OFICIAL", subtitle="Informacion Clientes Empresa En la Red", y="Cant.", x="", caption = "Info Clientes - Fase1")
 
 
 #################################################           P6210               ###
@@ -304,7 +308,7 @@ table(informacion_clientes$P6210)
 prop.table(table(informacion_clientes$P6210))
 names(which(table(informacion_clientes$P6210) == max(table(informacion_clientes$P6210))))
 
-barras
+ggplot(informacion_clientes, aes(P6210)) + geom_bar(fill= c("aquamarine2", "orange", "grey", "pink", "steelblue", "yellow", "magenta")) + labs(title= "Nivel Educativo", subtitle="Informacion Clientes Empresa En la Red", y="Cant.", x="", caption = "Info Clientes - Fase1")
 
 #################################################           P6210S1                ###
 #                                                         GRADO
@@ -319,7 +323,9 @@ quantile(informacion_clientes$P6210S1)
 range(informacion_clientes$P6210S1)
 
 table(informacion_clientes$P6210S1)
-barras
+boxplot(informacion_clientes$P6210S1, main = "Grado Cursado / En Curso", xlab="Grados cursados  -   Clientes En La Red", col="steelblue", border = "red", horizontal = TRUE, notch = TRUE )
+ggplot(informacion_clientes, aes(P6210S1)) + geom_bar(aes(fill= P6020)) + labs(title= "Grado Cursado / En Curso", subtitle="Informacion Clientes Empresa En la Red", y="Cant.", x="Grado", caption = "Info Clientes - Fase1")
+
 
 #################################################           P6220               ###
 #        ¿CUÁL ES EL TÍTULO O DIPLOMA DE MAYOR NIVEL EDUCATIVO QUE USTED HA RECIBIDO?
@@ -331,7 +337,7 @@ table(subset9$P6220)
 prop.table(table(subset9$P6220))
 names(which(table(subset9$P6220) == max(table(subset9$P6220))))
 
-barras
+ggplot(subset9, aes(P6220)) + geom_bar(fill= c("aquamarine2", "orange", "grey", "pink", "steelblue", "magenta")) + labs(title= "Nivel Educativo - 2", subtitle="Informacion Clientes Empresa En la Red", y="Cant.", x="", caption = "Info Clientes - Fase1")
 
 #################################################           CLASE              ###
 
@@ -340,7 +346,7 @@ table(informacion_clientes$CLASE)
 prop.table(table(informacion_clientes$CLASE))
 names(which(table(informacion_clientes$CLASE) == max(table(informacion_clientes$CLASE))))
 
-barras
+ggplot(informacion_clientes, aes(CLASE)) + geom_bar() + labs(title= "CLASE", subtitle="Informacion Clientes Empresa En la Red", y="Cant.", x="", caption = "Info Clientes - Fase1")
 
 #################################################           ESC               ###
 #                                                       ESCOLARIDAD
@@ -357,7 +363,8 @@ var(subset10$ESC)
 quantile(subset10$ESC)
 range(subset10$ESC)
 
-pte grafico
+boxplot(subset10$ESC, main = "Escolaridad", xlab="Grados de Escolaridad  -   Clientes En La Red", col="steelblue", border = "red", horizontal = TRUE, notch = TRUE )
+ggplot(subset10, aes(ESC)) + geom_bar(aes(fill= P6020)) + labs(title= "Escolaridad", subtitle="Informacion Clientes Empresa En la Red", y="Cant.", x="Grados Cursados", caption = "Info Clientes - Fase1")
 
 #################################################           MES              ###
 
@@ -366,7 +373,7 @@ table(informacion_clientes$MES)
 prop.table(table(informacion_clientes$MES))
 names(which(table(informacion_clientes$MES) == max(table(informacion_clientes$MES))))
 
-barras
+ggplot(informacion_clientes, aes(MES)) + geom_bar() + labs(title= "MES", subtitle="Informacion Clientes Empresa En la Red", y="Cant.", x="", caption = "Info Clientes - Fase1")
 
 #################################################           DEPARTAMENTO             ###
 
@@ -375,7 +382,7 @@ table(informacion_clientes$DPTO)
 prop.table(table(informacion_clientes$DPTO))
 names(which(table(informacion_clientes$DPTO) == max(table(informacion_clientes$DPTO))))
 
-barras
+ggplot(informacion_clientes, aes(DPTO)) + geom_bar(aes(fill= P6020)) + labs(title= "Departamento", subtitle="Informacion Clientes Empresa En la Red", y="Cant.", x="", caption = "Info Clientes - Fase1")
 
 #################################################           P212                     ###
 #                                             ¿TIENE TARJETA DE CRÉDITO?
@@ -385,7 +392,7 @@ table(informacion_clientes$P212)
 prop.table(table(informacion_clientes$P212))
 names(which(table(informacion_clientes$P212) == max(table(informacion_clientes$P212))))
 
-barras
+ggplot(informacion_clientes, aes(P212)) + geom_bar() + labs(title= "¿Tiene Tarjeta de Crédito?", subtitle="Informacion Clientes Empresa En la Red", y="Cant.", x="", caption = "Info Clientes - Fase1")
 
 #################################################                 P213             ###
 #                                                ¿CUÁL ES SU INGRESO MENSUAL ESTIMADO?
