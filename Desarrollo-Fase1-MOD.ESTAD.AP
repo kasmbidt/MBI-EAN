@@ -125,8 +125,7 @@ var(subset2$P6030S3)
 quantile(subset2$P6030S3)
 range(subset2$P6030S3)
 
-boxplot(subset2$P6030S3, main = "Años de Nacimiento Clientes En La Red", xlab="Año", col="orange", border = "brown", horizontal = TRUE, notch = TRUE )
-
+ggplot(subset2, aes(P6030S3)) + geom_boxplot(fill = "orange", col="red", outlier.color = "red", outlier.fill = "red", outlier.shape = 19, outlier.size = 1.5, notch = TRUE) + labs(title= "Año de Nacimiento", subtitle="Informacion Clientes Empresa En la Red", y="", x="Año", caption = "Info Clientes - Fase1")
 
 #################################################           P6040                  ###
 #                     ¿CUÁNTOS AÑOS CUMPLIDOS TIENE...? (SI ES MENOR DE 1 AÑO, ESCRIBA 00)
@@ -141,8 +140,8 @@ quantile(informacion_clientes$P6040)
 range(informacion_clientes$P6040)
 
 table(informacion_clientes$P6040)
-ggplot(informacion_clientes, aes(P6040)) + geom_bar(fill = "brown") + labs(title= "EDAD CLIENTES EN LA RED", subtitle="Informacion Clientes Empresa En la Red", y="Frecuencia", x="Edades", caption = "Info Clientes - Fase1")
-boxplot(informacion_clientes$P6040, main = "Edad Clientes En La Red", xlab="Edad", col="orange", border = "brown", horizontal = TRUE, notch = TRUE )
+
+ggplot(informacion_clientes, aes(P6040)) + geom_boxplot(fill = "orange", col="red", outlier.color = "red", outlier.fill = "red", outlier.shape = 19, outlier.size = 1.5, notch = TRUE) + labs(title= "Edades", subtitle="Informacion Clientes Empresa En la Red", y="", x="Edad", caption = "Info Clientes - Fase1")
 
 
 #################################################           P6050                  ###
@@ -205,8 +204,7 @@ var(subset4$P6150)
 quantile(subset4$P6150)
 range(subset4$P6150)
 
-boxplot(subset4$P6040, main = "Cantidad de Meses sin Afiliacion en SS", xlab="Meses", col="steelblue", border = "brown", horizontal = TRUE, notch = TRUE )
-ggplot(subset4, aes(P6150)) + geom_bar() + labs(title= "Cantidad de Meses sin Afiliacion en SS", subtitle="Informacion Clientes Empresa En la Red", y= "Freq.", x="Meses Inactivo en SS", caption = "Info Clientes - Fase1")
+ggplot(subset4, aes(P6150)) + geom_boxplot(fill = "orange", col="red", outlier.color = "red", outlier.fill = "red", outlier.shape = 19, outlier.size = 1.5, notch = TRUE) + labs(title= "Tiempo Sin Afiliacion a SS (Meses)", subtitle="Informacion Clientes Empresa En la Red", y="", x="Cantidad de Meses", caption = "Info Clientes - Fase1")
 
 
 #################################################           P6100                ###
@@ -252,7 +250,7 @@ var(subset7$P6120)
 quantile(subset7$P6120)
 range(subset7$P6120)
 
-ggplot(subset7, mapping = aes(x = P6040, y = P6120, col = P6120)) +  geom_point()  + labs(title= "Monto consignado a SS", subtitle="Informacion Clientes Empresa En la Red", y="Miles de pesos", x="Edades", caption = "Info Clientes - Fase1")
+ggplot(subset7, aes(P6120)) + geom_boxplot(fill = "blue", col="red", outlier.color = "red", outlier.fill = "red", outlier.shape = 19, outlier.size = 1.5, notch = TRUE) + labs(title= "Monto consignado a SS", subtitle="Informacion Clientes Empresa En la Red", y="", x="Monto", caption = "Info Clientes - Fase1")
 
 #################################################           P6125               ###
 #¿EN LOS ÚLTIMOS DOCE MESES DEJÓ DE ASISTIR AL MÉDICO O NO SE HOSPITALIZÓ, POR NO TENER CON QUE PAGAR ESTOS SERVICIOS EN LA EPS O ARS?
@@ -323,8 +321,8 @@ quantile(informacion_clientes$P6210S1)
 range(informacion_clientes$P6210S1)
 
 table(informacion_clientes$P6210S1)
-boxplot(informacion_clientes$P6210S1, main = "Grado Cursado / En Curso", xlab="Grados cursados  -   Clientes En La Red", col="steelblue", border = "red", horizontal = TRUE, notch = TRUE )
-ggplot(informacion_clientes, aes(P6210S1)) + geom_bar(aes(fill= P6020)) + labs(title= "Grado Cursado / En Curso", subtitle="Informacion Clientes Empresa En la Red", y="Cant.", x="Grado", caption = "Info Clientes - Fase1")
+
+ggplot(informacion_clientes, aes(P6210S1)) + geom_boxplot(fill = "pink", col="red", outlier.color = "red", outlier.fill = "red", outlier.shape = 19, outlier.size = 1.5, notch = TRUE) + labs(title= "Grado Cursado / En Curso", subtitle="Informacion Clientes Empresa En la Red", y="Cant.", x="Grado", caption = "Info Clientes - Fase1")
 
 
 #################################################           P6220               ###
@@ -363,7 +361,7 @@ var(subset10$ESC)
 quantile(subset10$ESC)
 range(subset10$ESC)
 
-boxplot(subset10$ESC, main = "Escolaridad", xlab="Grados de Escolaridad  -   Clientes En La Red", col="steelblue", border = "red", horizontal = TRUE, notch = TRUE )
+ggplot(subset10, aes(ESC)) + geom_boxplot(fill = "pink", col="red", outlier.color = "red", outlier.fill = "red", outlier.shape = 19, outlier.size = 1.5, notch = TRUE) + labs(title= "Escolaridad", subtitle="Informacion Clientes Empresa En la Red", y="", x="Años de Escolaridad", caption = "Info Clientes - Fase1")
 ggplot(subset10, aes(ESC)) + geom_bar(aes(fill= P6020)) + labs(title= "Escolaridad", subtitle="Informacion Clientes Empresa En la Red", y="Cant.", x="Grados Cursados", caption = "Info Clientes - Fase1")
 
 #################################################           MES              ###
@@ -408,8 +406,7 @@ range(informacion_clientes$P213)
 
 table(informacion_clientes$P213)
 
-timeseries
-
+ggplot(informacion_clientes, aes(P213)) + geom_boxplot(fill = "steelblue", col="red", outlier.color = "red", outlier.fill = "red", outlier.shape = 19, outlier.size = 1.5, notch = TRUE) + labs(title= "Ingreso Mensual Estimado", subtitle="Informacion Clientes Empresa En la Red", y="", x="Monto de Ingresos Mensuales Estimados", caption = "Info Clientes - Fase1")
 
 #################################################                 P214             ###
 #                         ¿Cuál FUE EL MONTO DE LA COMPRA REALIZADA EN NUESTRA TIENDA?
