@@ -141,7 +141,9 @@ quantile(informacion_clientes$P6040)
 range(informacion_clientes$P6040)
 
 table(informacion_clientes$P6040)
-barras
+ggplot(informacion_clientes, aes(P6040)) + geom_bar(fill = "brown") + labs(title= "EDAD CLIENTES EN LA RED", subtitle="Informacion Clientes Empresa En la Red", y="Frecuencia", x="Edades", caption = "Info Clientes - Fase1")
+boxplot(informacion_clientes$P6040, main = "Edad Clientes En La Red", xlab="Edad", col="orange", border = "brown", horizontal = TRUE, notch = TRUE )
+
 
 #################################################           P6050                  ###
 #                          ¿CUÁL ES EL PARENTESCO DE ... CON EL JEFE O JEFA DEL HOGAR?
@@ -152,7 +154,7 @@ table(informacion_clientes$P6050)
 prop.table(table(informacion_clientes$P6050))
 names(which(table(informacion_clientes$P6050) == max(table(informacion_clientes$P6050))))
 
-barras
+ggplot(informacion_clientes, aes(P6050)) + geom_bar(fill = "red") + labs(title= "COMPOSICION FAMILIAR CLIENTES EN LA RED", subtitle="Informacion Clientes Empresa En la Red", y="Frecuencia", x="Parentezco con Jefe de Hogar", caption = "Info Clientes - Fase1")
 
 #################################################           P6070                ###
 #                                                 ACTUALMENTE: ESTADO CIVIL
@@ -162,7 +164,7 @@ table(informacion_clientes$P6070)
 prop.table(table(informacion_clientes$P6070))
 names(which(table(informacion_clientes$P6070) == max(table(informacion_clientes$P6070))))
 
-barras
+ggplot(informacion_clientes, aes(P6070)) + geom_bar(aes(fill= P6020)) + labs(title= "ESTADO CIVIL POR GÉNERO CLIENTES EN LA RED", subtitle="Informacion Clientes Empresa En la Red", y="Frecuencia", x="Estado civil", caption = "Info Clientes - Fase1")
 
 #################################################           P6090                ###
 #¿...ESTÁ AFILIADO, ES COTIZANTE O ES BENEFICIARIO DE ALGUNA ENTIDAD DE SEGURIDAD SOCIAL EN SALUD?
@@ -172,7 +174,9 @@ table(informacion_clientes$P6090)
 prop.table(table(informacion_clientes$P6090))
 names(which(table(informacion_clientes$P6090) == max(table(informacion_clientes$P6090))))
 
-barras
+ggplot(informacion_clientes, aes(P6090)) + geom_bar(fill= "steelblue") + labs(title= "Afiliaciones a Seguridad Social", subtitle="Informacion Clientes Empresa En la Red", y= "Cant.", x="Tiene - No tiene SS", caption = "Info Clientes - Fase1")
+pie(table(informacion_clientes$P6090), col = c("orange", "white", "steelblue"), main = "Afiliaciones a Seguridad Social")
+
 
 #################################################           P6140                ###
 #¿ANTERIORMENTE ESTUVO ... AFILIADO, FUE COTIZANTE O BENEFICIARIO DE ALGUNA ENTIDAD DE SEGURIDAD SOCIAL EN SALUD?
@@ -180,11 +184,11 @@ barras
 subset3 <- informacion_clientes[!is.na(informacion_clientes$P6140),]
 
 describe(subset3$P6140)
-table(subset3$P6090)
-prop.table(table(subset3$P6090))
-names(which(table(subset3$P6090) == max(table(subset3$P6090))))
+table(subset3$P6140)
+prop.table(table(subset3$P6140))
+names(which(table(subset3$P6140) == max(table(subset3$P6140))))
 
-barras
+ggplot(subset3, aes(P6140)) + geom_bar(fill= "pink") + labs(title= "Tuvo SS en el pasado (Sin SS Actualmente)", subtitle="Informacion Clientes Empresa En la Red", y= "Cant.", x="Tuvo - No tuvo SS", caption = "Info Clientes - Fase1")
 
 #################################################           P6150                ###
 #¿CUÁNTOS MESES HACE QUE ... NO ESTÁ AFILIADO O NO COTIZA A LA SEGURIDAD SOCIAL EN SALUD?
@@ -201,7 +205,8 @@ var(subset4$P6150)
 quantile(subset4$P6150)
 range(subset4$P6150)
 
-boxplot
+boxplot(subset4$P6040, main = "Cantidad de Meses sin Afiliacion en SS", xlab="Meses", col="steelblue", border = "brown", horizontal = TRUE, notch = TRUE )
+ggplot(subset4, aes(P6150)) + geom_bar() + labs(title= "Cantidad de Meses sin Afiliacion en SS", subtitle="Informacion Clientes Empresa En la Red", y= "Freq.", x="Meses Inactivo en SS", caption = "Info Clientes - Fase1")
 
 
 #################################################           P6100                ###
