@@ -68,8 +68,6 @@ range(informacion_clientes$P6016)
 
 ggplot(informacion_clientes, aes(P6016)) + geom_bar(aes(fill= P6020)) + labs(title= "¿Quien Proporciona La Informacion?", subtitle="Informacion Clientes Empresa En la Red", y="Frecuencia", x="Categoria", caption = "Info Clientes - Fase1")
 
-#plot(informacion_clientes$P6016, main = valueLabel(informacion_clientes$P6016), ylab = "Frecuencia")
-
 #################################################           P6020                   ###
 #                                                    ¿ES HOMBRE O MUJER?
 table(informacion_clientes$P6020)
@@ -129,8 +127,345 @@ range(subset2$P6030S3)
 
 boxplot(subset2$P6030S3, main = "Años de Nacimiento Clientes En La Red", xlab="Año", col="orange", border = "brown", horizontal = TRUE, notch = TRUE )
 
-#################################################           P6030S3                  ###
-#  
+
+#################################################           P6040                  ###
+#                     ¿CUÁNTOS AÑOS CUMPLIDOS TIENE...? (SI ES MENOR DE 1 AÑO, ESCRIBA 00)
+
+summary(informacion_clientes$P6040)
+describe(informacion_clientes$P6040)
+mean(informacion_clientes$P6040, trim=0.10) #10% trimmed mean
+Moda(informacion_clientes$P6040)
+sd(informacion_clientes$P6040)
+var(informacion_clientes$P6040)
+quantile(informacion_clientes$P6040)
+range(informacion_clientes$P6040)
+
+table(informacion_clientes$P6040)
+barras
+
+#################################################           P6050                  ###
+#                          ¿CUÁL ES EL PARENTESCO DE ... CON EL JEFE O JEFA DEL HOGAR?
+
+describe(informacion_clientes$P6050)
+quantile(informacion_clientes$P6050)
+table(informacion_clientes$P6050)
+prop.table(table(informacion_clientes$P6050))
+names(which(table(informacion_clientes$P6050) == max(table(informacion_clientes$P6050))))
+
+barras
+
+#################################################           P6070                ###
+#                                                 ACTUALMENTE: ESTADO CIVIL
+
+describe(informacion_clientes$P6070)
+table(informacion_clientes$P6070)
+prop.table(table(informacion_clientes$P6070))
+names(which(table(informacion_clientes$P6070) == max(table(informacion_clientes$P6070))))
+
+barras
+
+#################################################           P6090                ###
+#¿...ESTÁ AFILIADO, ES COTIZANTE O ES BENEFICIARIO DE ALGUNA ENTIDAD DE SEGURIDAD SOCIAL EN SALUD?
+
+describe(informacion_clientes$P6090)
+table(informacion_clientes$P6090)
+prop.table(table(informacion_clientes$P6090))
+names(which(table(informacion_clientes$P6090) == max(table(informacion_clientes$P6090))))
+
+barras
+
+#################################################           P6140                ###
+#¿ANTERIORMENTE ESTUVO ... AFILIADO, FUE COTIZANTE O BENEFICIARIO DE ALGUNA ENTIDAD DE SEGURIDAD SOCIAL EN SALUD?
+
+subset3 <- informacion_clientes[!is.na(informacion_clientes$P6140),]
+
+describe(subset3$P6140)
+table(subset3$P6090)
+prop.table(table(subset3$P6090))
+names(which(table(subset3$P6090) == max(table(subset3$P6090))))
+
+barras
+
+#################################################           P6150                ###
+#¿CUÁNTOS MESES HACE QUE ... NO ESTÁ AFILIADO O NO COTIZA A LA SEGURIDAD SOCIAL EN SALUD?
+
+subset4 <- informacion_clientes[!is.na(informacion_clientes$P6150),]
+
+summary(subset4$P6150)
+describe(subset4$P6150)
+mean(subset4$P6150, trim = 10)
+median(subset4$P6150)
+Moda(subset4$P6150)
+sd(subset4$P6150)
+var(subset4$P6150)
+quantile(subset4$P6150)
+range(subset4$P6150)
+
+boxplot
+
+
+#################################################           P6100                ###
+#    ¿A CUAL DE LOS SIGUIENTES REGÍMENES DE SEGURIDAD SOCIAL EN SALUD ESTÁ AFILIADO:
+
+
+subset5 <- informacion_clientes[!is.na(informacion_clientes$P6100),]
+
+describe(subset5$P6100)
+table(subset5$P6100)
+prop.table(table(subset5$P6100))
+names(which(table(subset5$P6100) == max(table(subset5$P6100))))
+
+barras
+
+#################################################           P6110               ###
+#                                ¿QUIÉN PAGA MENSUALMENTE POR LA AFILIACIÓN DE ...?
+
+subset6 <- informacion_clientes[!is.na(informacion_clientes$P6110),]
+
+describe(subset6$P6110)
+table(subset6$P6110)
+prop.table(table(subset6$P6110))
+names(which(table(subset6$P6110) == max(table(subset6$P6110))))
+
+barras
+
+#################################################           P6120                ###
+#¿CUÁNTO PAGA O CUÁNTO LE DESCUENTAN MENSUALMENTE? (SI NO SABE CUANTO PAGA O CUANTO LE DESCUENTAN ESCRIBA 98)
+
+subset7 <- informacion_clientes[!is.na(informacion_clientes$P6120),]
+
+summary(subset7$P6120)
+describe(subset7$P6120)
+mean(subset7$P6120, trim = 10)
+median(subset7$P6120)
+Moda(subset7$P6120)
+sd(subset7$P6120)
+var(subset7$P6120)
+quantile(subset7$P6120)
+range(subset7$P6120)
+
+pte grafico
+
+#################################################           P6125               ###
+#¿EN LOS ÚLTIMOS DOCE MESES DEJÓ DE ASISTIR AL MÉDICO O NO SE HOSPITALIZÓ, POR NO TENER CON QUE PAGAR ESTOS SERVICIOS EN LA EPS O ARS?
+
+describe(informacion_clientes$P6125)
+table(informacion_clientes$P6125)
+prop.table(table(informacion_clientes$P6125))
+names(which(table(informacion_clientes$P6125) == max(table(informacion_clientes$P6125))))
+
+barras
+
+#################################################           P6160               ###
+#                                                      ¿SABE LEER Y ESCRIBIR?
+
+describe(informacion_clientes$P6160)
+table(informacion_clientes$P6160)
+prop.table(table(informacion_clientes$P6160))
+names(which(table(informacion_clientes$P6160) == max(table(informacion_clientes$P6160))))
+
+barras
+
+#################################################           P6170               ###
+#                      ¿ACTUALMENTE ... ASISTE A LA ESCUELA, COLEGIO O UNIVERSIDAD?
+
+
+describe(informacion_clientes$P6170)
+table(informacion_clientes$P6170)
+prop.table(table(informacion_clientes$P6170))
+names(which(table(informacion_clientes$P6170) == max(table(informacion_clientes$P6170))))
+
+barras
+
+
+#################################################           P6175               ###
+#                                 EL ESTABLECIMIENTO AL QUE ASISTE ... ¿ES OFICIAL?
+
+subset8 <- informacion_clientes[!is.na(informacion_clientes$P6175),]
+
+describe(subset8$P6175)
+table(subset8$P6175)
+prop.table(table(subset8$P6175))
+names(which(table(subset8$P6175) == max(table(subset8$P6175))))
+
+barras
+
+
+#################################################           P6210               ###
+#¿CUÁL ES EL NIVEL EDUCATIVO MÁS ALTO ALCANZADO POR ... Y EL ÚLTIMO AÑO O GRADO APROBADO EN ESTE NIVEL?
+
+describe(informacion_clientes$P6210)
+table(informacion_clientes$P6210)
+prop.table(table(informacion_clientes$P6210))
+names(which(table(informacion_clientes$P6210) == max(table(informacion_clientes$P6210))))
+
+barras
+
+#################################################           P6210S1                ###
+#                                                         GRADO
+
+summary(informacion_clientes$P6210S1)
+describe(informacion_clientes$P6210S1)
+mean(informacion_clientes$P6210S1, trim=0.10) #10% trimmed mean
+Moda(informacion_clientes$P6210S1)
+sd(informacion_clientes$P6210S1)
+var(informacion_clientes$P6210S1)
+quantile(informacion_clientes$P6210S1)
+range(informacion_clientes$P6210S1)
+
+table(informacion_clientes$P6210S1)
+barras
+
+#################################################           P6220               ###
+#        ¿CUÁL ES EL TÍTULO O DIPLOMA DE MAYOR NIVEL EDUCATIVO QUE USTED HA RECIBIDO?
+
+subset9 <- informacion_clientes[!is.na(informacion_clientes$P6220),]
+
+describe(subset9$P6220)
+table(subset9$P6220)
+prop.table(table(subset9$P6220))
+names(which(table(subset9$P6220) == max(table(subset9$P6220))))
+
+barras
+
+#################################################           CLASE              ###
+
+describe(informacion_clientes$CLASE)
+table(informacion_clientes$CLASE)
+prop.table(table(informacion_clientes$CLASE))
+names(which(table(informacion_clientes$CLASE) == max(table(informacion_clientes$CLASE))))
+
+barras
+
+#################################################           ESC               ###
+#                                                       ESCOLARIDAD
+
+subset10 <- informacion_clientes[!is.na(informacion_clientes$ESC),]
+
+describe(subset10$ESC)
+summary(subset10$ESC)
+mean(subset10$ESC, trim = 10)
+median(subset10$ESC)
+Moda(subset10$ESC)
+sd(subset10$ESC)
+var(subset10$ESC)
+quantile(subset10$ESC)
+range(subset10$ESC)
+
+pte grafico
+
+#################################################           MES              ###
+
+describe(informacion_clientes$MES)
+table(informacion_clientes$MES)
+prop.table(table(informacion_clientes$MES))
+names(which(table(informacion_clientes$MES) == max(table(informacion_clientes$MES))))
+
+barras
+
+#################################################           DEPARTAMENTO             ###
+
+describe(informacion_clientes$DPTO)
+table(informacion_clientes$DPTO)
+prop.table(table(informacion_clientes$DPTO))
+names(which(table(informacion_clientes$DPTO) == max(table(informacion_clientes$DPTO))))
+
+barras
+
+#################################################           P212                     ###
+#                                             ¿TIENE TARJETA DE CRÉDITO?
+
+describe(informacion_clientes$P212)
+table(informacion_clientes$P212)
+prop.table(table(informacion_clientes$P212))
+names(which(table(informacion_clientes$P212) == max(table(informacion_clientes$P212))))
+
+barras
+
+#################################################                 P213             ###
+#                                                ¿CUÁL ES SU INGRESO MENSUAL ESTIMADO?
+
+summary(informacion_clientes$P213)
+describe(informacion_clientes$P213)
+mean(informacion_clientes$P213, trim=0.10) #10% trimmed mean
+Moda(informacion_clientes$P213)
+sd(informacion_clientes$P213)
+var(informacion_clientes$P213)
+quantile(informacion_clientes$P213)
+range(informacion_clientes$P213)
+
+table(informacion_clientes$P213)
+
+timeseries
+
+
+#################################################                 P214             ###
+#                         ¿Cuál FUE EL MONTO DE LA COMPRA REALIZADA EN NUESTRA TIENDA?
+
+
+summary(informacion_clientes$P214)
+describe(informacion_clientes$P214)
+mean(informacion_clientes$P214, trim=0.10) #10% trimmed mean
+Moda(informacion_clientes$P214)
+sd(informacion_clientes$P214)
+var(informacion_clientes$P214)
+quantile(informacion_clientes$P214)
+range(informacion_clientes$P214)
+
+table(informacion_clientes$P214)
+
+timeseries
+
+#################################################                 P215             ###
+#                              ¿Cuál FUE EL MONTO GASTADO EN TIENDAS SIMILARES?
+
+
+summary(informacion_clientes$P215)
+describe(informacion_clientes$P215)
+mean(informacion_clientes$P215, trim=0.10) #10% trimmed mean
+Moda(informacion_clientes$P215)
+sd(informacion_clientes$P215)
+var(informacion_clientes$P215)
+quantile(informacion_clientes$P215)
+range(informacion_clientes$P215)
+
+table(informacion_clientes$P215)
+
+timeseries
+
+#################################################                 P216             ###
+#                                               RENTA DISPONIBLE BRUTA DE LA REGION
+
+summary(informacion_clientes$P216)
+describe(informacion_clientes$P216)
+mean(informacion_clientes$P216, trim=0.10) #10% trimmed mean
+Moda(informacion_clientes$P216)
+sd(informacion_clientes$P216)
+var(informacion_clientes$P216)
+quantile(informacion_clientes$P216)
+range(informacion_clientes$P216)
+
+table(informacion_clientes$P216)
+
+timeseries
+
+#################################################                 P217              ###
+#                                  GASTO TOTAL EN ALIMENTACION Y BEBIDAS NO ALCOHOLICAS
+
+summary(informacion_clientes$P217)
+describe(informacion_clientes$P217)
+mean(informacion_clientes$P217, trim=0.10) #10% trimmed mean
+Moda(informacion_clientes$P217)
+sd(informacion_clientes$P217)
+var(informacion_clientes$P217)
+quantile(informacion_clientes$P217)
+range(informacion_clientes$P217)
+
+table(informacion_clientes$P217)
+
+timeseries
+
+#########################################################################################
 
 
 
