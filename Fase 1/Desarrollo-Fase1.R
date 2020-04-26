@@ -50,7 +50,13 @@ describe(informacion_clientes)
 #Tener en cuenta las variables que poseen valores faltantes
 
 sapply(informacion_clientes,function(x) sum(is.na(x)))
+#r no tiene un comando para calcular la moda por lo que creamos la funcion
 
+Moda <- function(x) {
+  ux <- unique(x)
+  ux[which.max(tabulate(match(x, ux)))]
+}
+       
 #ahora si cargamos la libreria para los graficos
 library(ggplot2)
 #################################################          P6016                    ###
